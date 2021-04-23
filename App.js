@@ -2,6 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Alert } from 'react-native';
 
+const Separator = () => (
+  <View style={styles.separator} />
+);
+
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
@@ -17,6 +21,14 @@ export default function App() {
           onPress={()=> Alert.alert('Çıktı!')}
           color="#822e5f"
         />
+        <Separator />
+      </View>
+      <View style={styles.content}>
+        <Text style={styles.contentText}>Hani buna da tıklamak istersen console da 'çıktı!' yazar</Text>
+        <Text onPress={() => {console.log('çıktı!')}} style={styles.SecondButton}>
+          <Text>Bana Tıkla</Text>
+        </Text>
+        <Separator />
       </View>
     </SafeAreaView>
   );
@@ -55,4 +67,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
   },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  FirstButton: {
+    width: 120,
+    height: 40,
+    backgroundColor: 'white',
+  },
+  SecondButton:{
+    width:120 ,
+    height: 40 ,
+    backgroundColor: 'white',
+    textAlign: 'center',
+    lineHeight: 40,
+  }
 });

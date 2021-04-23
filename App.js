@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, Alert } from 'react-native';
 
 export default function App() {
   return (
@@ -10,6 +10,13 @@ export default function App() {
         <Text style={styles.hText}>FirstApp</Text>
       </View>
       <View style={styles.content}>
+        <Text style={styles.contentText}>Şimdi sen aşağıdaki düğmeye basarsan bir Alert çıkacak falan</Text>
+        <Button 
+          style={styles.FirstButton}
+          title="ALERT"
+          onPress={()=> Alert.alert('Çıktı!')}
+          color="#822e5f"
+        />
       </View>
     </SafeAreaView>
   );
@@ -39,6 +46,13 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: '#FDBE01'
-  }
+    backgroundColor: '#FDBE01',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  contentText: {
+    fontSize: 22,
+    textAlign: 'center',
+    padding: 10,
+  },
 });

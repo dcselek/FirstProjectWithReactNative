@@ -1,10 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Alert } from 'react-native';
+import { ArrowRight, BedBlack24Dp, MicBlack24Dp, MicBlack48Dp, SearchBlack24Dp } from './src/components/icons/index'
 
-const Separator = () => (
-  <View style={styles.separator} />
-);
 
 export default function App() {
   return (
@@ -15,20 +13,20 @@ export default function App() {
       </View>
       <View style={styles.content}>
         <Text style={styles.contentText}>Şimdi sen aşağıdaki düğmeye basarsan bir Alert çıkacak falan</Text>
-        <Button 
+        <Button
           style={styles.FirstButton}
           title="ALERT"
-          onPress={()=> Alert.alert('Çıktı!')}
+          onPress={() => Alert.alert('Çıktı!')}
           color="#822e5f"
         />
-        <Separator />
-      </View>
-      <View style={styles.content}>
-        <Text style={styles.contentText}>Hani buna da tıklamak istersen console da 'çıktı!' yazar</Text>
-        <Text onPress={() => {console.log('çıktı!')}} style={styles.SecondButton}>
-          <Text>Bana Tıkla</Text>
-        </Text>
-        <Separator />
+        {/* 
+          ##Svg Denemesi##
+          package.json native için 'svgr' komutu düzenlendi. Önceki versiyonda width / height hatası giderildi. ✔✔
+        */}
+        <View flexDirection='row' alignItems='center'>
+          <ArrowRight stroke='black' width={36} height={36}></ArrowRight>
+          <BedBlack24Dp fill='white' width={60} height={60} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -67,21 +65,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
   },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: '#737373',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  FirstButton: {
-    width: 120,
-    height: 40,
-    backgroundColor: 'white',
-  },
-  SecondButton:{
-    width:120 ,
-    height: 40 ,
-    backgroundColor: 'white',
-    textAlign: 'center',
-    lineHeight: 40,
-  }
 });

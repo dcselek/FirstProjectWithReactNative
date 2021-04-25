@@ -3,11 +3,19 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Button, Alert } from 'react-native';
 import { ArrowRight, BedBlack24Dp, MicBlack24Dp, MicBlack48Dp, SearchBlack24Dp } from './src/components/icons/index'
 
+import Homepage from './src/views/homepage';
+import ActionPage from './src/views/action';
+
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+    <View style={styles.container}>
+      {/* <View style={styles.header}>
         <Text style={styles.logo}>DcSelek</Text>
         <Text style={styles.hText}>FirstApp</Text>
       </View>
@@ -19,23 +27,51 @@ export default function App() {
           onPress={() => Alert.alert('Çıktı!')}
           color="#822e5f"
         />
-        {/* 
-          ##Svg Denemesi##
-          package.json native için 'svgr' komutu düzenlendi. Önceki versiyonda width / height hatası giderildi. ✔✔
-        */}
+        
         <View flexDirection='row' alignItems='center'>
           <ArrowRight stroke='black' width={36} height={36}></ArrowRight>
           <BedBlack24Dp fill='white' width={60} height={60} />
         </View>
-      </View>
-    </SafeAreaView>
+      </View> */}
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={Homepage}
+            options={{
+              title: 'Ana Sayfa',
+              headerStyle: {
+                backgroundColor: '#FDBE01'
+              },
+              headerTitleStyle:{
+                fontWeight: 'bold'
+              },
+            }}
+          />
+          <Stack.Screen name="Action"
+            component={ActionPage}
+            options={{
+              title: 'Action',
+              headerStyle: {
+                backgroundColor: '#FDBE01'
+              },
+              headerBackTitleStyle:{
+                color:'#822e5f'
+              },
+              
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#822e5f',
+    backgroundColor: 'black'
   },
   header: {
     flexDirection: 'row',
